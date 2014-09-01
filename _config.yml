@@ -13,3 +13,10 @@ collections:
     eps:
         output: true
         permalink: /:path/
+defaults:
+    -
+        scope:
+            path: ""
+            type: eps
+        values:
+            layout: ep
