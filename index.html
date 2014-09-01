@@ -1,0 +1,13 @@
+---
+layout: default
+---
+{% for post in site.posts %}
+<article>
+<h2><a href="">
+    hi
+</a></h2>
+<div class="description">
+    {{ post.content | markdownify }}
+</div>
+</article>
+{% endfor %}

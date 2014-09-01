@@ -21,7 +21,7 @@ media/main.css: _src/main.less $(BOWER_STUFF)
 media/jquery.js: bower_components/jquery/dist/jquery.min.js
 	cp $< $@
 
-$(HTML): index.md $(STATIC)
+$(HTML): index.html $(STATIC)
 	jekyll build $(JEKYLLARGS)
 
 clean:
