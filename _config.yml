@@ -9,4 +9,7 @@ exclude:
     - bower_components
     - node_modules
 
-permalink: /episodes/:title.html
+collections:
+    eps:
+        output: true
+        permalink: /:path/

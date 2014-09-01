@@ -1,10 +1,10 @@
 ---
 layout: default
 ---
-{% for post in site.posts %}
+{% for post in site.eps %}
 <article>
-<h2><a href="">
-    hi
+<h2><a href="{{ post.url }}">
+    {{ post.number }}: {{ post.title }}
 </a></h2>
 <div class="description">
     {{ post.content | markdownify }}
