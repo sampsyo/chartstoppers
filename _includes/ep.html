@@ -5,7 +5,13 @@
 </a></h2>
 <ul class="details">
     <li class="date">week of {{ ep.date | date: "%B %d, %Y" }}</li>
+    <li class="download"><a href="{{ ep.audio }}" download>download</a></li>
 </ul>
+<div class="player">
+    <audio src="{{ ep.audio }}" type="audio/mp3" controls
+        preload="metadata">
+    </audio>
+</div>
 <div class="description">
     {{ ep.content | markdownify }}
 </div>
