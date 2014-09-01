@@ -1,0 +1,12 @@
+name: Chartstoppers
+author: Adrian Sampson
+url: http://chartstoppers.radbox.org/
+
+markdown: kramdown
+highlighter: null
+
+exclude:
+    - bower_components
+    - node_modules
+
+permalink: /episodes/:title.html

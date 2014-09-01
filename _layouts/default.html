@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            {{ site.name }}{% if page.title %}: {{ page.title }}{% endif %}
+        </title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="{{ site.base }}/media/main.css">
+
+        <link rel="alternate" type="application/rss+xml" href="{{ site.base }}/feed.xml" title="Podcast">
+    </head>
+    <body>
+        <div class="container">
+
+            <header>
+                <h1>
+                    <a href="{{ site.base }}/">{{ site.name }}</a>
+                </h1>
+            </header>
+
+            {{ content }}
+
+        </div>
+    </body>
+</html>
