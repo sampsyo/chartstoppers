@@ -1,0 +1,12 @@
+<article>
+{% assign ep = include.ep %}
+<h2><a href="{{ ep.url }}">
+    #{{ ep.number }}: {{ ep.title }}
+</a></h2>
+<ul class="details">
+    <li class="date">week of {{ ep.date | date: "%B %d, %Y" }}</li>
+</ul>
+<div class="description">
+    {{ ep.content | markdownify }}
+</div>
+</article>
