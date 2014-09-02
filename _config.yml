@@ -1,5 +1,4 @@
 name: Chartstoppers
-author: Adrian Sampson
 url: http://chartstoppers.radbox.org/
 
 markdown: kramdown
@@ -20,3 +19,12 @@ defaults:
             type: eps
         values:
             layout: ep
+
+podcast:
+    description: Hello.
+    copyright: something
+    author: Eric Peterson and Adrian Sampson
+    explicit: yes
+    email: adrian@radbox.org
+    category: Music
+    image: art.jpg
