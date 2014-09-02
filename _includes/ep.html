@@ -1,14 +1,15 @@
 <article>
 {% assign ep = include.ep %}
+{% capture audio %}{{ site.base }}/audio/{{ ep.number }}.mp3{% endcapture %}
 <h2><a href="{{ ep.url }}">
     #{{ ep.number }}: {{ ep.title }}
 </a></h2>
 <ul class="details">
     <li class="date">week of {{ ep.date | date: "%B %d, %Y" }}</li>
-    <li class="download"><a href="{{ ep.audio }}" download>download</a></li>
+    <li class="download"><a href="{{ audio }}" download>download MP3</a></li>
 </ul>
 <div class="player">
-    <audio src="{{ ep.audio }}" type="audio/mp3" controls
+    <audio src="{{ audio }}" type="audio/mp3" controls
         preload="metadata">
     </audio>
 </div>
