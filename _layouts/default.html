@@ -30,12 +30,17 @@
         <nav>
             <ul>
                 <li>
-                    <a href="{{ feedurl }}">Subscribe with RSS</a>
+                    <a href="{{ feedurl }}">
+                        <span class="octicon octicon-rss"></span>
+                        Subscribe with RSS
+                    </a>
                 </li>
                 {% if site.podcast.itunesurl %}
                 <li>
-                    <a href="{{ site.podcast.itunesurl }}">Subscribe in
-                        iTunes</a>
+                    <a href="{{ site.podcast.itunesurl }}">
+                        <span class="octicon octicon-broadcast"></span>
+                        Subscribe in iTunes
+                    </a>
                 </li>
                 {% endif %}
             </ul>
