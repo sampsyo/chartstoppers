@@ -32,6 +32,9 @@
         <nav>
             <ul>
                 <li>
+                    {{ site.data.podcast.description | markdownify }}
+                </li>
+                <li>
                     <a href="/{{ site.feed }}">
                         <span class="octicon octicon-rss"></span>
                         Subscribe with RSS
