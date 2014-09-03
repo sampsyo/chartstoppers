@@ -7,9 +7,15 @@
 <ul class="details">
     <li class="date">week of {{ ep.date | date: "%B %d, %Y" }}</li>
     <li class="download"><a href="{{ audio }}" download>
-        <span class="octicon octicon-cloud-download"></span>
-        download MP3
+        <span class="octicon octicon-playback-play"></span>
+        MP3
     </a></li>
+    {% if ep.soundcloud %}
+    <li><a href="{{ ep.soundcloud }}">
+        <span class="octicon octicon-cloud-download"></span>
+        SoundCloud
+    </a></li>
+    {% endif %}
 </ul>
 <div class="player">
     <audio src="{{ audio }}" type="audio/mp3" controls
