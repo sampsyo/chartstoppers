@@ -48,6 +48,12 @@
                     </a>
                 </li>
                 {% endif %}
+                {% for name in site.data.podcast.twitter %}
+                <li>
+                    Follow
+                    <a href="https://twitter.com/{{ name }}">@{{ name }}</a>
+                </li>
+                {% endfor %}
             </ul>
         </nav>
     </div>
