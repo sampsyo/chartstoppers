@@ -2,27 +2,28 @@
 layout: null
 ---
 <?xml version="1.0" encoding="UTF-8"?>
+{% assign pc = site.data.podcast %}
+{% capture explicit %}{% if pc.explicit %}yes{% else %}no{% endif %}{% endcapture %}
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>{{ site.name }}</title>
-    <itunes:subtitle>{{ site.podcast.subtitle | xml_escape }}</itunes:subtitle>
+    <itunes:subtitle>{{ pc.subtitle | xml_escape }}</itunes:subtitle>
     <link>{{ site.url }}</link>
     <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml" />
     <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
-    <description>{{ site.podcast.description | strip_html }}</description>
+    <description>{{ pc.description | strip_html }}</description>
     <language>en-US</language>
-    <copyright>{{ site.podcast.copyright }}</copyright>
-    <itunes:author>{{ site.podcast.author }}</itunes:author>
-    <itunes:keywords>{{ site.podcast.keywords }}</itunes:keywords>
-    {% capture explicit %}{% if site.podcast.explicit %}yes{% else %}no{% endif %}{% endcapture %}
+    <copyright>{{ pc.copyright }}</copyright>
+    <itunes:author>{{ pc.author }}</itunes:author>
+    <itunes:keywords>{{ pc.keywords }}</itunes:keywords>
     <itunes:explicit>{{ explicit }}</itunes:explicit>
-    <itunes:image href="{{ site.url }}{{ site.podcast.image }}"/>
+    <itunes:image href="{{ site.url }}{{ pc.image }}"/>
     <itunes:owner>
-      <itunes:name>{{ site.podcast.author }}</itunes:name>
-      <itunes:email>{{ site.podcast.email }}</itunes:email>
+      <itunes:name>{{ pc.author }}</itunes:name>
+      <itunes:email>{{ pc.email }}</itunes:email>
     </itunes:owner>
     <itunes:block>no</itunes:block>
-    <itunes:category text="{{ site.podcast.category }}"/>
+    <itunes:category text="{{ pc.category }}"/>
     {% for ep in site.eps %}
     <item>
       <title>{{ ep.title }}</title>
@@ -31,13 +32,13 @@ layout: null
       <enclosure url="{{ site.url }}audio/{{ ep.number }}.mp3" length="{{ ep.audiolength }}" type="audio/mp3"/>
       <link>{{ site.url }}{{ ep.number }}</link>
       <guid>{{ site.url }}{{ ep.number }}</guid>
-      <itunes:author>{{ site.podcast.author }}</itunes:author>
+      <itunes:author>{{ pc.author }}</itunes:author>
       <itunes:subtitle>{{ ep.subtitle | xml_escape }}</itunes:subtitle>
       <itunes:summary>{{ ep.content | strip_html }}</itunes:summary>
       <itunes:explicit>{{ explicit }}</itunes:explicit>
       <itunes:duration>{{ ep.audiolength }}</itunes:duration>
       <content:encoded>{{ ep.content | xml_escape }}</content:encoded>
-      <itunes:image href="{{ site.url }}{{ site.podcast.image }}"/>
+      <itunes:image href="{{ site.url }}{{ pc.image }}"/>
     </item>
     {% endfor %}
   </channel>
