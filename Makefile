@@ -1,7 +1,7 @@
 NODE_DEPS := bower@~1.3.9 less@~1.7.4
-BOWER_DEPS := bootstrap\#~3.2.0 jquery\#~2.1.1 octicons\#~2.1.2
+BOWER_DEPS := bootstrap\#~3.2.0 octicons\#~2.1.2
 OCTICONS_EXT := eot svg ttf woff
-STATIC := media/main.css media/jquery.js $(OCTICONS_EXT:%=media/octicons.%)
+STATIC := media/main.css $(OCTICONS_EXT:%=media/octicons.%)
 HTML := _site/index.html
 DEST := dh:domains/chartstoppers.radbox.org
 
@@ -20,8 +20,6 @@ setup: $(BOWER_STUFF)
 # Build static components.
 media/main.css: _src/main.less $(BOWER_STUFF)
 	./node_modules/less/bin/lessc $(LESSARGS) $< $@
-media/jquery.js: bower_components/jquery/dist/jquery.min.js
-	cp $< $@
 media/octicons.%: bower_components/octicons/octicons/octicons.%
 	cp $< $@
 
