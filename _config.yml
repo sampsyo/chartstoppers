@@ -8,6 +8,7 @@ highlighter: null
 exclude:
     - bower_components
     - node_modules
+    - Makefile
 
 collections:
     eps:

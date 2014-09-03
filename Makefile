@@ -29,9 +29,9 @@ $(HTML): index.html $(STATIC)
 	jekyll build $(JEKYLLARGS)
 
 clean:
-	rm -rf node_modules bower_components $(STATIC) _site
+	rm -rf node_modules bower_components media _site
 clean_site:
-	rm -rf $(STATIC) _site
+	rm -rf media _site
 
 serve:
 	jekyll serve -w $(JEKYLLARGS)
