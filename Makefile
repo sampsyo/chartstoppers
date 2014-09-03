@@ -3,8 +3,9 @@ BOWER_DEPS := bootstrap\#~3.2.0 jquery\#~2.1.1 octicons\#~2.1.2
 OCTICONS_EXT := eot svg ttf woff
 STATIC := media/main.css media/jquery.js $(OCTICONS_EXT:%=media/octicons.%)
 HTML := _site/index.html
+DEST := dh:domains/chartstoppers.radbox.org
 
-.PHONY: setup clean build serve
+.PHONY: setup clean clean_site build serve deploy
 
 build: $(STATIC) $(HTML)
 
@@ -29,6 +30,13 @@ $(HTML): index.html $(STATIC)
 
 clean:
 	rm -rf node_modules bower_components $(STATIC) _site
+clean_site:
+	rm -rf $(STATIC) _site
 
 serve:
 	jekyll serve -w $(JEKYLLARGS)
+
+RSYNCARGS ?= --compress --recursive --checksum --itemize-changes \
+	--delete -e ssh
+deploy: clean_site build
+	rsync $(RSYNCARGS) _site/ $(DEST)
