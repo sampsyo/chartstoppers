@@ -22,6 +22,15 @@
         SoundCloud
     </a></li>
     {% endif %}
+    <li>
+        <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+        {% capture tweet %}{{ site.name }} #{{ ep.number }}: “{{ ep.title }}”.{% endcapture %}
+        {% capture link %}{{ site.url }}{{ ep.number }}{% endcapture %}
+        <a href="https://twitter.com/intent/tweet?text={{ tweet | cgi_escape }}&url={{ link | cgi_escape }}">
+            <span class="octicon octicon-link-external"></span>
+            tweet
+        </a>
+    </li>
 </ul>
 <div class="player">
     <audio controls preload="metadata">
