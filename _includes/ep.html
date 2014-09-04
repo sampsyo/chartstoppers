@@ -6,7 +6,12 @@
     #{{ ep.number }}: {{ ep.title }}
 </a></h2>
 <ul class="details">
-    <li class="date">week of {{ ep.date | date: "%B %d, %Y" }}</li>
+    <li class="date">
+        <a href="http://www.billboard.com/charts/{{ ep.week }}/hot-100">
+            <span class="octicon octicon-calendar"></span>
+            week of {{ ep.week | date: "%B %d, %Y" }}
+        </a>
+    </li>
     <li class="download"><a href="{{ audio }}" download>
         <span class="octicon octicon-playback-play"></span>
         MP3

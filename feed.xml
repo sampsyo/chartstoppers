@@ -9,7 +9,7 @@ layout: null
     <title>{{ site.name }}</title>
     <itunes:subtitle>{{ pc.subtitle | xml_escape }}</itunes:subtitle>
     <link>{{ site.url }}</link>
-    <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="{{ site.url }}{{ site.feed }}" rel="self" type="application/rss+xml" />
     <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
     <description>{{ pc.description | markdownify | strip_html | strip_newlines }}</description>
     <language>en-US</language>
