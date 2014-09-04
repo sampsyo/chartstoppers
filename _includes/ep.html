@@ -2,6 +2,8 @@
 {% assign ep = include.ep %}
 {% capture mp3 %}/audio/{{ ep.number }}.mp3{% endcapture %}
 {% capture ogg %}/audio/{{ ep.number }}.ogg{% endcapture %}
+{% capture synopsis %}{{ site.name }} #{{ ep.number }}: “{{ ep.title }}”{% endcapture %}
+{% capture link %}{{ site.url }}{{ ep.number }}{% endcapture %}
 <h2><a href="{{ ep.url }}">
     #{{ ep.number }}: {{ ep.title }}
 </a></h2>
@@ -12,7 +14,7 @@
             week of {{ ep.week | date: "%B %d, %Y" }}
         </a>
     </li>
-    <li class="download"><a href="{{ audio }}" download>
+    <li class="download"><a href="{{ mp3 }}" download>
         <span class="octicon octicon-playback-play"></span>
         MP3
     </a></li>
@@ -24,11 +26,15 @@
     {% endif %}
     <li>
         <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-        {% capture tweet %}{{ site.name }} #{{ ep.number }}: “{{ ep.title }}”.{% endcapture %}
-        {% capture link %}{{ site.url }}{{ ep.number }}{% endcapture %}
-        <a href="https://twitter.com/intent/tweet?text={{ tweet | cgi_escape }}&url={{ link | cgi_escape }}">
+        <a href="https://twitter.com/intent/tweet?text={{ synopsis | cgi_escape }}&url={{ link | cgi_escape }}">
             <span class="octicon octicon-link-external"></span>
             tweet
+        </a>
+    </li>
+    <li>
+        <a href="http://huffduffer.com/add?bookmark[url]={{ link | cgi_escape }}&bookmark[title]={{ synopsis | cgi_escape }}&bookmark[description]={{ ep.content | markdownify | strip_html | cgi_escape }}&bookmark[tags]={{ site.data.podcast.keywords | cgi_escape }}">
+            <span class="octicon octicon-megaphone"></span>
+            huffduff
         </a>
     </li>
 </ul>
