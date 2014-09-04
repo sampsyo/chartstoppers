@@ -4,6 +4,9 @@
 {% capture ogg %}/audio/{{ ep.number }}.ogg{% endcapture %}
 {% capture synopsis %}{{ site.name }} #{{ ep.number }}: “{{ ep.title }}”{% endcapture %}
 {% capture link %}{{ site.url }}{{ ep.number }}{% endcapture %}
+{% capture newline %}
+{% endcapture %}
+{% assign excerpt = ep.content | split: newline | first %}
 <h2><a href="{{ ep.url }}">
     #{{ ep.number }}: {{ ep.title }}
 </a></h2>
@@ -32,7 +35,7 @@
         </a>
     </li>
     <li>
-        <a href="http://huffduffer.com/add?bookmark[url]={{ link | cgi_escape }}&bookmark[title]={{ synopsis | cgi_escape }}&bookmark[description]={{ ep.content | markdownify | strip_html | cgi_escape }}&bookmark[tags]={{ site.data.podcast.keywords | cgi_escape }}">
+        <a href="http://huffduffer.com/add?bookmark[url]={{ link | cgi_escape }}&bookmark[title]={{ synopsis | cgi_escape }}&bookmark[description]={{ excerpt | markdownify | strip_html | strip_newlines | cgi_escape }}&bookmark[tags]={{ site.data.podcast.keywords | cgi_escape }}">
             <span class="octicon octicon-megaphone"></span>
             huffduff
         </a>
