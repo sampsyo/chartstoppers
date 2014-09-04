@@ -29,14 +29,14 @@ layout: null
       <title>{{ ep.title }}</title>
       <description>{{ ep.content | strip_html }}</description>
       <pubDate>{{ ep.date | date_to_rfc822 }}</pubDate>
-      <enclosure url="{{ site.url }}audio/{{ ep.number }}.mp3" length="{{ ep.audiolength }}" type="audio/mp3"/>
+      <enclosure url="{{ site.url }}audio/{{ ep.number }}.mp3" length="{{ ep.size }}" type="audio/mpeg"/>
       <link>{{ site.url }}{{ ep.number }}</link>
       <guid>{{ site.url }}{{ ep.number }}</guid>
       <itunes:author>{{ pc.author }}</itunes:author>
       <itunes:subtitle>{{ ep.subtitle | xml_escape }}</itunes:subtitle>
       <itunes:summary>{{ ep.content | strip_html }}</itunes:summary>
       <itunes:explicit>{{ explicit }}</itunes:explicit>
-      <itunes:duration>{{ ep.audiolength }}</itunes:duration>
+      <itunes:duration>{{ ep.length }}</itunes:duration>
       <content:encoded>{{ ep.content | xml_escape }}</content:encoded>
       <itunes:image href="{{ site.url }}{{ pc.image }}"/>
     </item>
