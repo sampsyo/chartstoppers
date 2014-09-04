@@ -1,6 +1,7 @@
 description: Hello.
 copyright: something
-subtitle: The charts never sounded this good.
+subtitle: |
+    [Eric Peterson](https://twitter.com/peezmachine) and [Adrian Sampson](https://twitter.com/samps) repeatedly fail to understand the top of the charts.
 author: Eric Peterson and Adrian Sampson
 explicit: yes
 email: adrian@radbox.org
@@ -8,7 +9,7 @@ category: Music
 image: art.jpg
 keywords: pop, music, charts, billboard, reviews
 description: |
-    [Eric Peterson](https://twitter.com/peezmachine) and [Adrian Sampson](https://twitter.com/samps) repeatedly fail to understand the top of the charts.
+    [Eric Peterson](https://twitter.com/peezmachine) and [Adrian Sampson](https://twitter.com/samps) tend to have opinions about the week's hottest jams. Each week, they kindly offer to deliver these thoughts directly into your earholes.
 twitter:
     - peezmachine
     - samps
