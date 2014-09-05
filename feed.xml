@@ -25,8 +25,7 @@ layout: null
     <itunes:block>no</itunes:block>
     <itunes:category text="{{ pc.category }}"/>
     {% for ep in site.eps %}
-    <item>
-      {% include epdata.liquid %}
+    <item>{% include epdata.liquid %}
       <title>{{ ep.title }}</title>
       <description>{{ excerpt_plain | xml_escape }}</description>
       <pubDate>{{ ep.date | date_to_rfc822 }}</pubDate>
