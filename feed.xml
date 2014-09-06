@@ -1,9 +1,8 @@
 ---
 layout: null
 ---
-<?xml version="1.0" encoding="UTF-8"?>
-{% assign pc = site.data.podcast %}
-{% capture explicit %}{% if pc.explicit %}yes{% else %}no{% endif %}{% endcapture %}
+<?xml version="1.0" encoding="UTF-8"?>{% assign pc = site.data.podcast %}
+{% capture explicit %}{% if pc.explicit %}yes{% else %}clean{% endif %}{% endcapture %}
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>{{ site.name }}</title>
@@ -12,7 +11,7 @@ layout: null
     <atom:link href="{{ site.url }}{{ site.feed }}" rel="self" type="application/rss+xml" />
     <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
     <description>{{ pc.description | markdownify | strip_html | strip_newlines | xml_escape }}</description>
-    <language>en-US</language>
+    <language>{{ pc.language }}</language>
     <copyright>{{ pc.copyright }}</copyright>
     <itunes:author>{{ pc.author }}</itunes:author>
     <itunes:keywords>{{ pc.keywords }}</itunes:keywords>
@@ -22,7 +21,7 @@ layout: null
       <itunes:name>{{ pc.author }}</itunes:name>
       <itunes:email>{{ pc.email }}</itunes:email>
     </itunes:owner>
-    <itunes:block>no</itunes:block>
+    <itunes:block>{% if pc.block %}yes{% else %}no{% endif %}</itunes:block>
     <itunes:category text="{{ pc.category }}"/>
     {% for ep in site.eps %}
     <item>{% include epdata.liquid %}
@@ -38,7 +37,7 @@ layout: null
       <itunes:explicit>{{ explicit }}</itunes:explicit>
       <itunes:duration>{{ ep.length }}</itunes:duration>
       <content:encoded>{{ ep.content | xml_escape }}</content:encoded>
-      <itunes:image href="{{ site.url }}{{ pc.image }}"/>
+      <itunes:image href="{{ site.url }}{% if ep.image %}{{ ep.image }}{% else %}{{ pc.image }}{% endif %}"/>
     </item>
     {% endfor %}
   </channel>
