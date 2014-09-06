@@ -1,0 +1,11 @@
+{% capture crap %}
+{% comment %}Liquid is terrible.{% endcomment %}
+{% capture mp3 %}/audio/{{ ep.number }}.mp3{% endcapture %}
+{% capture ogg %}/audio/{{ ep.number }}.ogg{% endcapture %}
+{% capture synopsis %}{{ site.name }} #{{ ep.number }}: “{{ ep.title }}”{% endcapture %}
+{% capture link %}{{ site.url }}{{ ep.number }}{% endcapture %}
+{% capture newline %}
+{% endcapture %}
+{% assign excerpt = ep.content | split: newline | first %}
+{% assign excerpt_plain = excerpt | markdownify | strip_html | strip_newlines %}
+{% endcapture %}{% assign crap = nil %}
