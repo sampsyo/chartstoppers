@@ -19,7 +19,7 @@
 </head>
 <body>
 <div class="container">
-
+    {% assign pc = site.data.podcast %}
     <header>
         <h1>
             <a href="/">{{ site.name }}</a>
@@ -30,7 +30,7 @@
         <nav>
             <ul>
                 <li>
-                    {{ site.data.podcast.subtitle | markdownify }}
+                    {{ pc.subtitle | markdownify }}
                 </li>
                 <li>
                     <a href="/{{ site.feed }}">
@@ -38,23 +38,26 @@
                         Subscribe with RSS
                     </a>
                 </li>
-                {% if site.data.podcast.itunes %}
+                {% if pc.itunes %}
                 <li>
-                    <a href="{{ site.data.podcast.itunes }}">
+                    <a href="{{ pc.itunes }}">
                         <span class="octicon octicon-broadcast"></span>
                         Subscribe in iTunes
                     </a>
                 </li>
                 {% endif %}
-                {% for name in site.data.podcast.twitter %}
+                {% for name in pc.twitter %}
+                <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
                 <li>
                     Follow
-                    <a href="https://twitter.com/{{ name }}">@{{ name }}</a>
+                    <a href="https://twitter.com/intent/user?screen_name={{ name | cgi_escape }}">@{{ name }}</a>
                 </li>
                 {% endfor %}
                 <li class="art">
-                    <img src="/{{ site.data.podcast.image }}"
-                        class="img-responsive" alt="{{ site.name }}">
+                    {% if pc.itunes %}<a href="{{ pc.itunes }}">{% endif %}
+                        <img src="/{{ pc.image }}" class="img-responsive"
+                            alt="{{ site.name }}">
+                    {% if pc.itunes %}</a>{% endif %}
                 </li>
             </ul>
         </nav>
