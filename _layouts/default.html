@@ -49,8 +49,8 @@
                 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
                 <li>
                     Follow
-                    {% for name in pc.twitter %}
-                        <a href="https://twitter.com/intent/user?screen_name={{ name | cgi_escape }}">@{{ name }}</a>
+                    {% assign index = 0 %}{% for name in pc.twitter %}{% assign index = index | plus: 1 %}
+                        <a href="https://twitter.com/intent/user?screen_name={{ name | cgi_escape }}">@{{ name }}</a>{% if pc.twitter.size > 1 %}{% if index < pc.twitter.size %},{% endif %}{% endif %}
                     {% endfor %}
                 </li>
                 <li class="art">
