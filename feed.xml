@@ -23,7 +23,7 @@ layout: null
     </itunes:owner>
     <itunes:block>{% if pc.block %}yes{% else %}no{% endif %}</itunes:block>
     <itunes:category text="{{ pc.category }}"/>
-    {% for ep in site.eps %}
+    {% assign eps = site.eps | sort: 'number' | reverse %}{% for ep in eps %}
     <item>{% include epdata.liquid %}
       <title>{{ ep.title }}</title>
       <description>{{ excerpt_plain | xml_escape }}</description>
