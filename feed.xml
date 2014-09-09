@@ -28,7 +28,7 @@ layout: null
       <title>{{ ep.title }}</title>
       <description>{{ excerpt_plain | xml_escape }}</description>
       <pubDate>{{ ep.date | date_to_rfc822 }}</pubDate>
-      <enclosure url="{{ site.url }}audio/{{ ep.number }}.mp3" length="{{ ep.size }}" type="audio/mpeg"/>
+      <enclosure url="{{ mp3 }}" length="{{ ep.size }}" type="audio/mpeg"/>
       <link>{{ site.url }}{{ ep.number }}</link>
       <guid>{{ site.url }}{{ ep.number }}</guid>
       <itunes:author>{{ pc.author }}</itunes:author>
