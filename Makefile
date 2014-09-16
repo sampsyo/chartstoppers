@@ -12,16 +12,18 @@ build: $(STATIC) $(HTML)
 # Somewhat dumb way to invoke setup on first run (but not thereafter) or on
 # manual invocation.
 BOWER_STUFF := bower_components/bootstrap/bower.json
-$(BOWER_STUFF):
-	npm install $(NODE_DEPS)
+BOWER := node_modules/bower/bin/bower
+$(BOWER_STUFF): $(BOWER)
 	./node_modules/bower/bin/bower install $(BOWER_DEPS)
+$(BOWER):
+	npm install $(NODE_DEPS)
 setup: $(BOWER_STUFF)
 
 # Build static components.
 media/main.css: _src/main.less $(BOWER_STUFF)
 	./node_modules/less/bin/lessc $(LESSARGS) $< $@
-media/octicons.%: bower_components/octicons/octicons/octicons.%
-	cp $< $@
+media/octicons.%: $(BOWER_STUFF)
+	cp bower_components/octicons/octicons/octicons.$* $@
 
 $(HTML): index.html $(STATIC)
 	jekyll build $(JEKYLLARGS)
