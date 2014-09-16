@@ -38,5 +38,9 @@ serve:
 
 RSYNCARGS ?= --compress --recursive --checksum --itemize-changes \
 	--delete -e ssh
+ifeq ($(wildcard audio),)
+	# Do not delete the audio directory on remote.
+	RSYNCARGS += --exclude=audio
+endif
 deploy: clean_site build
 	rsync $(RSYNCARGS) _site/ $(DEST)
