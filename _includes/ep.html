@@ -39,6 +39,7 @@
     </audio>
 </div>
 <div class="description">
+    {% if ep.image %}{{ ep.image }}{% endif %}
     {{ ep.content | markdownify }}
 </div>
 </article>
