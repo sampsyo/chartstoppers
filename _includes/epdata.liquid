@@ -18,6 +18,6 @@
 {% capture newline %}
 {% endcapture %}
 {% assign excerpt = ep.content | split: newline | first %}
-{% assign excerpt_plain = excerpt | markdownify | strip_html | strip_newlines %}
+{% assign excerpt_plain = excerpt | markdownify | replace: '&amp;','and' | strip_html | strip_newlines %}
 
 {% endcapture %}{% assign crap = nil %}
