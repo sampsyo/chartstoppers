@@ -37,7 +37,7 @@ layout: null
       <itunes:explicit>{{ explicit }}</itunes:explicit>
       <itunes:duration>{{ ep.length }}</itunes:duration>
       <content:encoded>{{ ep.content | xml_escape }}</content:encoded>
-      <itunes:image href="{{ site.url }}{% if ep.image %}{{ ep.image }}{% else %}{{ pc.image }}{% endif %}"/>
+      <itunes:image href="{{ imageurl }}"/>
     </item>
     {% endfor %}
   </channel>

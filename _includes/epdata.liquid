@@ -20,4 +20,6 @@
 {% assign excerpt = ep.content | split: newline | first %}
 {% assign excerpt_plain = excerpt | markdownify | replace: '&amp;','and' | strip_html | strip_newlines %}
 
+{% capture imageurl %}{{ site.url }}{% if ep.image %}{{ ep.image }}{% else %}{{ pc.image }}{% endif %}{% endcapture %}
+
 {% endcapture %}{% assign crap = nil %}
