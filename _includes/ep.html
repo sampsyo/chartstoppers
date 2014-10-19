@@ -30,10 +30,7 @@
     </li>
 </ul>
 <div class="player">
-    <audio controls preload="metadata">
-        <source src="{{ ep.audiolink.mp3 }}" type="audio/mpeg">
-        <source src="{{ ep.audiolink.ogg }}" type="audio/ogg">
-    </audio>
+{% include audioplayer.html %}
 </div>
 <div class="description">
     {% if ep.image %}

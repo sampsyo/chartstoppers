@@ -1,0 +1,5 @@
+<audio controls preload="metadata">
+    {% for fmt in site.data.podcast.formats %}{% for link in ep.audiolink %}{% if link[0] == fmt.ext %}
+    <source src="{{ link[1] }}" type="{{ fmt.mime }}">
+    {% endif %}{% endfor %}{% endfor %}
+</audio>

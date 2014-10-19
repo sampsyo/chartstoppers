@@ -9,9 +9,6 @@ audio {
 </head>
 <body>
 {% assign ep = page %}
-<audio controls preload="metadata">
-    <source src="{{ ep.audiolink.mp3 }}" type="audio/mpeg">
-    <source src="{{ ep.audiolink.ogg }}" type="audio/ogg">
-</audio>
+{% include audioplayer.html %}
 </body>
 </html>
