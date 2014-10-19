@@ -22,17 +22,32 @@ module Jekyll
         # Build up some extra metadata for each episode.
         converter = site.getConverterImpl(Jekyll::Converters::Markdown)
         body = converter.convert ep.content
-        plainbody = body.gsub /<.*?>/m, ''
-        ep.data.merge!({
+        plainbody = body.gsub(/<.*?>/m, '')
+        data = {
           "imageurl" => ep.data['image'] ?
                         "#{surl}#{ep.data['image']}" :
                         "#{surl}#{pc['image']}",
-          "ogg" => "#{surl}audio/#{ep.data['number']}.ogg",
-          "mp3" => "#{surl}audio/#{ep.data['number']}.mp3",
           "synopsis" => "#{sc['name']} ##{ep.data['number']}: " +
                         "“#{ ep.data['title'] }”",
           "summary" => plainbody.split("\n")[0],
-        })
+        }
+
+        # Audio URLs.
+        data["audiofile"] = {}
+        data["audiolink"] = {}
+        pc["formats"].each do |format|
+          aurl = "#{surl}audio/#{ep.data['number']}.#{format['ext']}"
+          data["audiofile"][format['ext']] = aurl
+          if pc["podtrac"]
+            alink = "http://www.podtrac.com/pts/redirect.mp3/" +
+              aurl.gsub(/^https?:\/\//, '')
+          else
+            alink = aurl
+          end
+          data["audiolink"][format['ext']] = alink
+        end
+
+        ep.data.merge! data
 
         # Optionally generate standalone player documents for Twitter player
         # cards.
@@ -40,6 +55,7 @@ module Jekyll
           player = PlayerDocument.new(ep.path, { site: site, collection: col })
           player.read
           player.data["layout"] = "player"
+          player.data.merge! data
           col.docs << player
         end
       end

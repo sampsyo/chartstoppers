@@ -20,14 +20,14 @@
     <meta name="twitter:title" content="{{ ep.synopsis }}">
     <meta name="twitter:description" content="{{ ep.summary }}">
     <meta name="twitter:image" content="{{ ep.imageurl }}">
-    <meta name="twitter:player:stream" content="{{ ep.mp3 }}">
+    <meta name="twitter:player:stream" content="{{ ep.audiofile.mp3 }}">
     <meta name="twitter:player:stream:content_type" content="audio/mpeg">
     {% endif %}
 
     <meta name="og:title" content="{{ ep.synopsis }}">
     <meta name="og:image" content="{{ ep.imageurl }}">
-    <meta name="og:audio" content="{{ ep.mp3 }}">
-    <meta name="og:audio:secure_url" content="{{ ep.mp3 }}">
+    <meta name="og:audio" content="{{ ep.audiolink.mp3 }}">
+    <meta name="og:audio:secure_url" content="{{ ep.audiofile.mp3 }}">
     <meta name="og:audio:type" content="audio/mpeg">
     {% endif %}
 
