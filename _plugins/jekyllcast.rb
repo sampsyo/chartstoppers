@@ -25,6 +25,8 @@ module Jekyll
                         "#{surl}#{pc['image']}",
           "ogg" => "#{surl}audio/#{ep.data['number']}.ogg",
           "mp3" => "#{surl}audio/#{ep.data['number']}.mp3",
+          "synopsis" => "#{sc['name']} ##{ep.data['number']}: " +
+                        "“#{ ep.data['title'] }”",
         })
 
         if site.data["podcast"]["player_card"]
