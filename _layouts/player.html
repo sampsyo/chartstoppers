@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+audio {
+   width: 100%;
+}
+</style>
+</head>
+<body>
+{% assign ep = page %}{% include epdata.liquid %}
+<audio controls preload="metadata">
+    <source src="{{ mp3 }}" type="audio/mpeg">
+    <source src="{{ ogg }}" type="audio/ogg">
+</audio>
+</body>
+</html>
