@@ -20,15 +20,15 @@
     <meta name="twitter:site" content="@{{ pc.twitter[0] }}">
     <meta name="twitter:title" content="{{ synopsis }}">
     <meta name="twitter:description" content="{{ excerpt_plain }}">
-    <meta name="twitter:image" content="{{ imageurl }}">
-    <meta name="twitter:player:stream" content="{{ site.url }}audio/{{ ep.number }}.mp3">
+    <meta name="twitter:image" content="{{ ep.imageurl }}">
+    <meta name="twitter:player:stream" content="{{ ep.mp3 }}">
     <meta name="twitter:player:stream:content_type" content="audio/mpeg">
     {% endif %}
 
     <meta name="og:type" content="{{ synopsis }}">
     <meta name="og:image" content="{{ imageurl }}">
-    <meta name="og:audio" content="{{ site.url }}audio/{{ ep.number }}.mp3">
-    <meta name="og:audio:secure_url" content="{{ site.url }}audio/{{ ep.number }}.mp3">
+    <meta name="og:audio" content="{{ ep.mp3 }}">
+    <meta name="og:audio:secure_url" content="{{ ep.mp3 }}">
     <meta name="og:audio:type" content="audio/mpeg">
     {% endif %}
 
