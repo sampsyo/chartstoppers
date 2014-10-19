@@ -24,20 +24,20 @@ layout: null
     <itunes:block>{% if pc.block %}yes{% else %}no{% endif %}</itunes:block>
     <itunes:category text="{{ pc.category }}"/>
     {% assign eps = site.eps | sort: 'number' | reverse %}{% for ep in eps %}
-    <item>{% include epdata.liquid %}
+    <item>
       <title>{{ ep.title }}</title>
-      <description>{{ excerpt_plain | xml_escape }}</description>
+      <description>{{ ep.summary | xml_escape }}</description>
       <pubDate>{{ ep.date | date_to_rfc822 }}</pubDate>
-      <enclosure url="{{ mp3 }}" length="{{ ep.size }}" type="audio/mpeg"/>
+      <enclosure url="{{ ep.audiolink.mp3 }}" length="{{ ep.size }}" type="audio/mpeg"/>
       <link>{{ site.url }}{{ ep.number }}</link>
       <guid>{{ site.url }}{{ ep.number }}</guid>
       <itunes:author>{{ pc.author }}</itunes:author>
       <itunes:subtitle>{{ ep.subtitle | xml_escape }}</itunes:subtitle>
-      <itunes:summary>{{ excerpt_plain | xml_escape }}</itunes:summary>
+      <itunes:summary>{{ ep.summary | xml_escape }}</itunes:summary>
       <itunes:explicit>{{ explicit }}</itunes:explicit>
       <itunes:duration>{{ ep.length }}</itunes:duration>
       <content:encoded>{{ ep.content | xml_escape }}</content:encoded>
-      <itunes:image href="{{ imageurl }}"/>
+      <itunes:image href="{{ ep.imageurl }}"/>
     </item>
     {% endfor %}
   </channel>

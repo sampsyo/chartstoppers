@@ -30,6 +30,7 @@ module Jekyll
           "synopsis" => "#{sc['name']} ##{ep.data['number']}: " +
                         "“#{ ep.data['title'] }”",
           "summary" => plainbody.split("\n")[0],
+          "link" => "#{surl}#{ep.data['number']}",
         }
 
         # Audio URLs.
@@ -39,7 +40,7 @@ module Jekyll
           aurl = "#{surl}audio/#{ep.data['number']}.#{format['ext']}"
           data["audiofile"][format['ext']] = aurl
           if pc["podtrac"]
-            alink = "http://www.podtrac.com/pts/redirect.mp3/" +
+            alink = "http://www.podtrac.com/pts/redirect.#{format['ext']}/" +
               aurl.gsub(/^https?:\/\//, '')
           else
             alink = aurl

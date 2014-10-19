@@ -1,4 +1,4 @@
-<article>{% assign ep = include.ep %}{% include epdata.liquid %}
+<article>{% assign ep = include.ep %}
 <h2><a href="{{ ep.url }}">
     #{{ ep.number }}: {{ ep.title }}
 </a></h2>
@@ -6,7 +6,7 @@
     <li class="date">
       {{ ep.date | date: "%B %e, %Y" }}
     </li>
-    <li class="download"><a href="{{ mp3 }}" download>
+    <li class="download"><a href="{{ ep.audiolink.mp3 }}" download>
         <span class="octicon octicon-playback-play"></span>
         MP3
     </a></li>
@@ -17,13 +17,13 @@
     </a></li>
     {% endif %}
     <li>
-        <a href="https://twitter.com/intent/tweet?text={{ synopsis | cgi_escape }}&url={{ link | cgi_escape }}">
+        <a href="https://twitter.com/intent/tweet?text={{ ep.synopsis | cgi_escape }}&url={{ ep.link | cgi_escape }}">
             <span class="octicon octicon-link-external"></span>
             tweet
         </a>
     </li>
     <li>
-        <a href="http://huffduffer.com/add?bookmark[url]={{ link | cgi_escape }}&bookmark[title]={{ synopsis | cgi_escape }}&bookmark[description]={{ excerpt_plain | cgi_escape }}&bookmark[tags]={{ site.data.podcast.keywords | cgi_escape }}">
+        <a href="http://huffduffer.com/add?bookmark[url]={{ ep.link | cgi_escape }}&bookmark[title]={{ ep.synopsis | cgi_escape }}&bookmark[description]={{ ep.summary | cgi_escape }}&bookmark[tags]={{ site.data.podcast.keywords | cgi_escape }}">
             <span class="octicon octicon-megaphone"></span>
             huffduff
         </a>
@@ -31,8 +31,8 @@
 </ul>
 <div class="player">
     <audio controls preload="metadata">
-        <source src="{{ mp3 }}" type="audio/mpeg">
-        <source src="{{ ogg }}" type="audio/ogg">
+        <source src="{{ ep.audiolink.mp3 }}" type="audio/mpeg">
+        <source src="{{ ep.audiolink.ogg }}" type="audio/ogg">
     </audio>
 </div>
 <div class="description">
