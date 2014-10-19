@@ -7,11 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {% assign pc = site.data.podcast %}
-    {% if page.collection == "eps" %}
-    {% comment %}Episode-specific headers. Really wishing for Django-style
-    template inheritance.{% endcomment %}
-    {% assign ep = page %}{% include epdata.liquid %}
-    <meta name="description" content="{{ excerpt_plain }}">
+    {% if page.collection == "eps" %}{% comment %}Episode-specific headers.
+    Really wishing for Django-style template inheritance.{% endcomment %}
+    {% assign ep = page %}
+    <meta name="description" content="{{ ep.summary }}">
     <meta name="author" content="{{ site.data.podcast.author }}">
     <meta name="keywords" content="{{ site.data.podcast.keywords }}">
 
@@ -19,14 +18,14 @@
     <meta name="twitter:card" content="player">
     <meta name="twitter:site" content="@{{ pc.twitter[0] }}">
     <meta name="twitter:title" content="{{ ep.synopsis }}">
-    <meta name="twitter:description" content="{{ excerpt_plain }}">
+    <meta name="twitter:description" content="{{ ep.summary }}">
     <meta name="twitter:image" content="{{ ep.imageurl }}">
     <meta name="twitter:player:stream" content="{{ ep.mp3 }}">
     <meta name="twitter:player:stream:content_type" content="audio/mpeg">
     {% endif %}
 
-    <meta name="og:type" content="{{ synopsis }}">
-    <meta name="og:image" content="{{ imageurl }}">
+    <meta name="og:title" content="{{ ep.synopsis }}">
+    <meta name="og:image" content="{{ ep.imageurl }}">
     <meta name="og:audio" content="{{ ep.mp3 }}">
     <meta name="og:audio:secure_url" content="{{ ep.mp3 }}">
     <meta name="og:audio:type" content="audio/mpeg">

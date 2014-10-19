@@ -19,6 +19,10 @@ module Jekyll
       surl = sc['url']
 
       site.collections["eps"].docs.each do |ep|
+        # Build up some extra metadata for each episode.
+        converter = site.getConverterImpl(Jekyll::Converters::Markdown)
+        body = converter.convert ep.content
+        plainbody = body.gsub /<.*?>/m, ''
         ep.data.merge!({
           "imageurl" => ep.data['image'] ?
                         "#{surl}#{ep.data['image']}" :
@@ -27,8 +31,11 @@ module Jekyll
           "mp3" => "#{surl}audio/#{ep.data['number']}.mp3",
           "synopsis" => "#{sc['name']} ##{ep.data['number']}: " +
                         "“#{ ep.data['title'] }”",
+          "summary" => plainbody.split("\n")[0],
         })
 
+        # Optionally generate standalone player documents for Twitter player
+        # cards.
         if site.data["podcast"]["player_card"]
           player = PlayerDocument.new(ep.path, { site: site, collection: col })
           player.read
