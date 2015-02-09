@@ -25,7 +25,7 @@
     <meta name="twitter:player:stream:content_type" content="audio/mpeg">
     {% endif %}
 
-    <meta name="og:title" content="{{ ep.synopsis }}">
+    <meta name="og:title" content="{{ ep.synopsis | replace: '#','' }}">
     <meta name="og:image" content="{{ ep.imageurl }}">
     <meta name="og:audio" content="{{ ep.audiolink.mp3 }}">
     <meta name="og:audio:secure_url" content="{{ ep.audiofile.mp3 }}">
