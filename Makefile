@@ -36,15 +36,10 @@ clean_site:
 serve:
 	jekyll serve -w $(JEKYLLARGS)
 
-RSYNCARGS ?= --compress --recursive --checksum --itemize-changes \
-	--delete -e ssh
+S3BUCKET := chartstoppers.com
 ifeq ($(wildcard audio),)
 	# Do not delete the audio directory on remote.
-	RSYNCARGS += --exclude=audio
+	S3SYNCARGS += --exclude audio
 endif
-deploy: clean_site build
-	rsync $(RSYNCARGS) _site/ $(DEST)
-
-S3BUCKET := chartstoppers.com
-deploy-s3: build
+deploy: build
 	aws s3 sync $(S3SYNCARGS) _site/ s3://$(S3BUCKET)
