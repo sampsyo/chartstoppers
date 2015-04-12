@@ -16,7 +16,7 @@ layout: null
     <itunes:author>{{ pc.author }}</itunes:author>
     <itunes:keywords>{{ pc.keywords }}</itunes:keywords>
     <itunes:explicit>{{ explicit }}</itunes:explicit>
-    <itunes:image href="{{ site.url }}{{ pc.image }}"/>
+    <itunes:image href="{{ pc.media_url }}{{ pc.image }}"/>
     <itunes:owner>
       <itunes:name>{{ pc.author }}</itunes:name>
       <itunes:email>{{ pc.email }}</itunes:email>

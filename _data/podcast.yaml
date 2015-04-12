@@ -12,7 +12,7 @@ description: |
 twitter: chartstoppers
 itunes: https://itunes.apple.com/us/podcast/chartstoppers/id915619679
 language: en-US
-podtrac: yes
+podtrac: no
 player_card: yes
 formats:
     - ext: mp3
@@ -20,3 +20,4 @@ formats:
     - ext: ogg
       mime: audio/ogg
 fblike: true
+media_url: "https://s3-us-west-2.amazonaws.com/chartstoppers.com/"

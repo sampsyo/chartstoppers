@@ -44,3 +44,7 @@ ifeq ($(wildcard audio),)
 endif
 deploy: clean_site build
 	rsync $(RSYNCARGS) _site/ $(DEST)
+
+S3BUCKET := chartstoppers.com
+deploy-s3: build
+	aws s3 sync $(S3SYNCARGS) _site/ s3://$(S3BUCKET)

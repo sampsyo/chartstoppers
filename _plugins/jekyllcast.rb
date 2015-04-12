@@ -16,7 +16,12 @@ module Jekyll
 
       sc = site.config
       pc = site.data["podcast"]
+
+      # Use either the site base URL or the podcast's media URL, if available.
       surl = sc['url']
+      if pc['media_url'] then
+        surl = pc['media_url']
+      end
 
       site.collections["eps"].docs.each do |ep|
         # Build up some extra metadata for each episode.
