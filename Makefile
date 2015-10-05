@@ -49,8 +49,8 @@ deploy: build
 LOG_DIR := logs
 LOG_BUCKET := chartstoppers-logs
 GOACCESS_ARGS := \
-	--log-format '%^ %^ [%d:%^] %h %^ %^ %^ %^ "%^ %r %^" %s %^ %b %^ %^ \
-	%^ "%^" "%u" %^' \
+	--log-format '%^ %^ [%d:%^] %h %^ %^ %^ %^ "%^ %r %^" %s %^ %b %T %^ \
+	%^ "%R" "%u" %^' \
 	--date-format '%d/%b/%Y' \
 	--time-format '%f' \
 	--agent-list

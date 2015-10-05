@@ -9,6 +9,8 @@ exclude:
     - bower_components
     - node_modules
     - Makefile
+    - logs
+    - report.html
 
 collections:
     eps:
