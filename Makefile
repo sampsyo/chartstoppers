@@ -45,3 +45,17 @@ ifeq ($(wildcard audio),)
 endif
 deploy: build
 	aws s3 sync $(S3SYNCARGS) _site/ s3://$(S3BUCKET)
+
+LOG_DIR := logs
+LOG_BUCKET := chartstoppers-logs
+GOACCESS_ARGS := \
+	--log-format '%^ %^ [%d:%^] %h %^ %^ %^ %^ "%^ %r %^" %s %^ %b %^ %^ \
+	%^ "%^" "%u" %^' \
+	--date-format '%d/%b/%Y' \
+	--time-format '%f' \
+	--agent-list
+.PHONY: getlogs
+getlogs:
+	aws s3 sync s3://$(LOG_BUCKET) $(LOG_DIR)
+report.html: $(LOG_DIR)
+	find $< -type f | xargs cat | goaccess $(GOACCESS_ARGS) > $@
