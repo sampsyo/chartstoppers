@@ -54,10 +54,13 @@ GOACCESS_ARGS := \
 	--date-format '%d/%b/%Y' \
 	--time-format '%f' \
 	--agent-list
-.PHONY: getlogs clearlogs
+CAT_LOGS := find $(LOG_DIR) -type f | xargs cat
+.PHONY: getlogs clearlogs analyze
 getlogs:
 	aws s3 sync s3://$(LOG_BUCKET) $(LOG_DIR)
 clearlogs:
 	aws s3 rm s3://$(LOG_BUCKET) --recursive
 report.html: $(LOG_DIR)
-	find $< -type f | xargs cat | goaccess $(GOACCESS_ARGS) > $@
+	$(CAT_LOGS) | goaccess $(GOACCESS_ARGS) > $@
+analyze:
+	$(CAT_LOGS) | goaccess $(GOACCESS_ARGS)
