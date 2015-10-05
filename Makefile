@@ -15,6 +15,7 @@ BOWER_STUFF := bower_components/bootstrap/bower.json
 BOWER := node_modules/bower/bin/bower
 $(BOWER_STUFF): $(BOWER)
 	./node_modules/bower/bin/bower install $(BOWER_DEPS)
+	touch $@
 $(BOWER):
 	npm install $(NODE_DEPS)
 setup: $(BOWER_STUFF)
