@@ -37,6 +37,7 @@ serve:
 	jekyll serve -w $(JEKYLLARGS)
 
 S3BUCKET := chartstoppers.com
+S3SYNCARGS := --size-only
 ifeq ($(wildcard audio),)
 	# Do not delete the audio directory on remote.
 	S3SYNCARGS += --exclude audio
