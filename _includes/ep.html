@@ -10,12 +10,6 @@
         <span class="octicon octicon-playback-play"></span>
         MP3
     </a></li>
-    {% if ep.soundcloud %}
-    <li><a href="{{ ep.soundcloud }}">
-        <span class="octicon octicon-cloud-download"></span>
-        SoundCloud
-    </a></li>
-    {% endif %}
     <li>
         <a href="https://twitter.com/intent/tweet?text={{ ep.synopsis | cgi_escape }}&url={{ ep.link | cgi_escape }}">
             <span class="octicon octicon-link-external"></span>
