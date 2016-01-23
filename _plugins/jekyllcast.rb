@@ -25,7 +25,7 @@ module Jekyll
 
       site.collections["eps"].docs.each do |ep|
         # Build up some extra metadata for each episode.
-        converter = site.getConverterImpl(Jekyll::Converters::Markdown)
+        converter = site.find_converter_instance(Jekyll::Converters::Markdown)
         body = converter.convert ep.content
         plainbody = body.gsub(/<.*?>/m, '')
         data = {
