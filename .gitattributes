@@ -1,15 +1,2 @@
-audio filter=lfs diff=lfs merge=lfs -text
-audio/1.mp3 filter=lfs diff=lfs merge=lfs -text
-audio/2.mp3 filter=lfs diff=lfs merge=lfs -text
-audio/3.mp3 filter=lfs diff=lfs merge=lfs -text
-audio/4.mp3 filter=lfs diff=lfs merge=lfs -text
-audio/5.mp3 filter=lfs diff=lfs merge=lfs -text
-audio/6.mp3 filter=lfs diff=lfs merge=lfs -text
-audio/1.ogg filter=lfs diff=lfs merge=lfs -text
-audio/2.ogg filter=lfs diff=lfs merge=lfs -text
-audio/3.ogg filter=lfs diff=lfs merge=lfs -text
-audio/4.ogg filter=lfs diff=lfs merge=lfs -text
-audio/5.ogg filter=lfs diff=lfs merge=lfs -text
-audio/6.ogg filter=lfs diff=lfs merge=lfs -text
-audio/7.mp3 filter=lfs diff=lfs merge=lfs -text
-audio/7.ogg filter=lfs diff=lfs merge=lfs -text
+audio/*.mp3 filter=lfs diff=lfs merge=lfs -text
+audio/*.ogg filter=lfs diff=lfs merge=lfs -text
