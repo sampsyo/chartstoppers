@@ -15,10 +15,8 @@ module Jekyll
       site.collections["ep_players"] = player_col
 
       # Process episodes in the "eps" and "epdrafts" collections.
-      ["eps", "drafteps"].each do |colname|
-        site.collections["eps"].docs.each do |ep|
-          augment_episode(site, player_col, ep)
-        end
+      site.collections["eps"].docs.each do |ep|
+        augment_episode(site, player_col, ep)
       end
     end
 
@@ -65,7 +63,7 @@ module Jekyll
 
       # Optionally generate standalone player documents for Twitter player
       # cards.
-      draft = ep.collection.label == "drafteps"
+      draft = ep.data["draft"]
       if site.data["podcast"]["player_card"] && !draft
         player = PlayerDocument.new(ep.path,
                                     { site: site, collection: player_col })

@@ -16,19 +16,10 @@ collections:
     eps:
         output: true
         permalink: /:path/
-    drafteps:
-        output: true
-        permalink: /draft/:path/
 defaults:
     -
         scope:
             path: ""
             type: eps
-        values:
-            layout: ep
-    -
-        scope:
-            path: ""
-            type: drafteps
         values:
             layout: ep

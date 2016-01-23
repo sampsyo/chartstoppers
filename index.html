@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
-{% assign eps = site.eps | sort: 'number' | reverse %}{% for ep in eps %}
+{% assign eps = site.eps | sort: 'number' | reverse %}{% for ep in eps %}{% if
+ep.draft != true %}
 {% include ep.html ep=ep %}
-{% endfor %}
+{% endif %}{% endfor %}

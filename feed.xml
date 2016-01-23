@@ -23,7 +23,7 @@ layout: null
     </itunes:owner>
     <itunes:block>{% if pc.block %}yes{% else %}no{% endif %}</itunes:block>
     <itunes:category text="{{ pc.category }}"/>
-    {% assign eps = site.eps | sort: 'number' | reverse %}{% for ep in eps %}
+    {% assign eps = site.eps | sort: 'number' | reverse %}{% for ep in eps %}{% if ep.draft != true %}
     <item>
       <title>{{ ep.title }}</title>
       <description>{{ ep.summary | xml_escape }}</description>
@@ -39,6 +39,6 @@ layout: null
       <content:encoded>{{ ep.content | xml_escape }}</content:encoded>
       <itunes:image href="{{ ep.imageurl }}"/>
     </item>
-    {% endfor %}
+    {% endif %}{% endfor %}
   </channel>
 </rss>
