@@ -25,11 +25,11 @@
     <meta name="twitter:player:height" content="32">
     {% endif %}
 
-    <meta name="og:title" content="{{ ep.synopsis | replace: '#','' }}">
-    <meta name="og:image" content="{{ ep.imageurl }}">
-    <meta name="og:audio" content="{{ ep.audiolink.mp3 }}">
-    <meta name="og:audio:secure_url" content="{{ ep.audiofile.mp3 }}">
-    <meta name="og:audio:type" content="audio/mpeg">
+    <meta property="og:title" content="{{ ep.synopsis | replace: '#','' }}">
+    <meta property="og:image" content="{{ ep.imageurl }}">
+    <meta property="og:audio" content="{{ ep.audiolink.mp3 }}">
+    <meta property="og:audio:secure_url" content="{{ ep.audiofile.mp3 }}">
+    <meta property="og:audio:type" content="audio/mpeg">
     {% endif %}
 
     <link rel="apple-touch-icon" sizes="152x152" href="/art/icon152.png">
